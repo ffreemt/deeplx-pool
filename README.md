@@ -12,6 +12,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 # or
 pipx install uv
 ```
+Fetch the repo and install necessary libs
 ```
 git clone https://github.com/ffreemt/deeplx-pool && cd deeplx-pool
 uv python install 3.12
