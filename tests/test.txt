@@ -1,0 +1,38 @@
+
+# Unlocking the Potential of Passive Two-Phase Liquid Cooling
+
+img__
+
+Photo: Internet
+
+Data centers face unprecedented challenges in this digital age of cloud computing, AI, and connected devices. New data center infrastructure and upgrades to existing legacy facilities are accelerating. Data centers currently consume an estimated 1-1.3% of the world’s electrical energy, with cooling accounting for nearly 40% of that energy load. This highlights the urgency for transformative measures in how the industry keeps IT equipment from overheating, especially as data center demand continues to surge.
+
+Data center cooling has always been demanding, but today the industry is witnessing a significant shift. Next-generation high-performance processors are challenging traditional cooling approaches with their increase in power dissipation, emitting up to 3.5 times more heat than their predecessors a decade ago.
+
+
+
+Air-cooling approaches, including computer room air conditioning units, are limiting as rack power densities increasingly exceed air cooling capabilities due to its low volumetric thermal capacity. To address this, data centers could consider server depopulation, however, this approach can lead to inferior economics. Instead, the industry is witnessing rack powers surging to 50 kW and this will likely continue to 100 kW and beyond in the coming years.
+
+As a result, data centers using air-cooling methods alone will face significant challenges to meet increasing data demands from society. This is where liquid cooling will play a key role, with passive two-phase liquid cooling emerging as an attractive prospect.
+
+## Liquid Cooling Approaches
+
+New data centers are embracing liquid cooling technology deployed closer to the IT equipment, while legacy data centers are seeking economical ways to integrate liquid cooling to operate the latest IT equipment without making significant infrastructure overhauls. There are several considerations to make before selecting the right liquid cooling implementation.
+
+Indirect liquid cooling still relies on air cooling at the server level but brings air-to-liquid heat exchangers or liquid-cooled in-row air conditioning units close to the rack to dissipate the heat produced by the IT equipment. Such systems can use either water operating in single-phase flow or dielectric fluids that evaporate during the heat transfer process. These hybrid air-liquid systems can offer improved cooling as well as compatibility with existing data centers. However, at the server level, they are limited due to the continued use of conventional air-cooled heat sinks. Achieving better performance requires larger complex heat sink designs and relatively expensive blowers or fans for improved airflow management within acceptable noise limits.
+
+Direct-to-chip cooling can be implemented in two different ways. First, single-phase water cooling employs pumps to supply flow to cold plates attached to high-power server components. Like air cooling, the temperature of the water increases as it absorbs heat from the components which strongly links performance to flow rate. Second, two-phase refrigerant cooling operates with pumped liquid coolant flowing into the cold plate absorbs heat by boiling at near-constant temperature.
+
+The resulting liquid/vapor mixture flowing out of each cold plate is transported to a coolant distribution unit to be condensed back to liquid. Both implementations still rely on air-cooling to address the heat from the low-power components and require complex active control which may raise reliability concerns due to the use of a pump.
+
+Immersion cooling submerges IT equipment in a dielectric fluid operating in either pumped single- or passive two-phase mode. While attractive for new data centers, this approach faces significant challenges in existing facilities. It struggles to integrate with current infrastructure and imposes space limitations, serviceability challenges, and cost concerns, making it far less effective for existing data centers.
+
+## The New Cooling Entrant
+
+There is a clear market need for groundbreaking technology that can unlock energy efficiency, cost savings, and long-term scalability in the fast-paced, high-reliability environment of the data center industry. This is where passive two-phase liquid cooling comes in.
+
+This closed-loop liquid cooling technology is implemented with high performance cold plate evaporators and condensers that ensure natural flow circulation driven by the heat from the processors themselves. It enables sustainable operations and high rack densities while ensuring flexibility, serviceability, and reliability.
+
+The solution is pumpless, waterless, self-regulating, and easily serviceable, requiring nearly-zero maintenance due to lower complexity and the use of a stable of cost-effective dielectric coolants. The reduction in overall operating expenses is immediately apparent and is enticing the industry to improve data center efficiency by adding liquid-cooled racks to existing or new data centers, right alongside traditional air-cooled racks.
+
+As the industry stands on the cusp of a new digital era, this groundbreaking passive two-phase liquid cooling technology not only promises to revolutionize data center efficiency but also sets a precedent for other industry leaders to create a more innovative and sustainable digital future for everyone. As data center stakeholders navigate the different cooling approaches, many are now in the process of turning to passive two-phase liquid cooling to drive the new era of computing innovation. The future is very passively cool.
