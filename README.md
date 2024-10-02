@@ -3,11 +3,13 @@
 deeplx url pool + REST API
 
 ## What it is
-`deeplx-pool` gleans valid free deeplx services (about 30-70) from shodan and fofa locally (using `diskacache`).
+`deeplx-pool` gleans valid free deeplx services (about 30-70) from shodan and fofa and save to  `diskacache`.
 
 ## Usage
 Install `uv` the way you like it, e.g.
 ```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+# or
 pipx install uv
 ```
 ```
