@@ -3,7 +3,7 @@
 deeplx url pool + REST API
 
 ## What it is
-`deeplx-pool` gleans valid free deeplx services (about 70) from shodan and fofa locally (using `diskacache`).
+`deeplx-pool` gleans valid free deeplx services (about 30-70) from shodan and fofa locally (using `diskacache`).
 
 ## Usage
 Install `uv` the way you like it, e.g.
@@ -38,4 +38,5 @@ print(urls)
 To quickly display the number of available urls:
 ```bash
 uv run python -c 'from pathlib import Path; import diskcache; cache = diskcache.Cache(Path.home() / ".diskcache" / "deeplx-sites"); print(len(cache.get("deeplx-sites")))'
+# 71
 ```
