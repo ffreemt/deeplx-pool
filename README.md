@@ -6,9 +6,14 @@ deeplx url pool + REST API
 `deeplx-pool` gleans valid free deeplx services (about 70) from shodan and fofa locally (using `diskacache`).
 
 ## Usage
+Install `uv` the way you like it, e.g.
+```
+pipx install uv
+```
 ```
 git clone https://github.com/ffreemt/deeplx-pool && cd deeplx-pool
-uv install
+uv python install 3.12
+uv sync
 
 uv run python -m deeplx_pool.deeplx_pool
 # or simply execute `inv` if you have `invoke` installed
@@ -28,4 +33,9 @@ print(urls)
 #    ('http://167.99.205.173:8080', 0.83),
 #    ('http://68.183.253.186:8080', 0.84),
 #    ('http://195.170.172.119:8088', 0.86),...]
+```
+
+To quickly display the number of available urls:
+```bash
+uv run python -c 'from pathlib import Path; import diskcache; cache = diskcache.Cache(Path.home() / ".diskcache" / "deeplx-sites"); print(len(cache.get("deeplx-sites")))'
 ```
