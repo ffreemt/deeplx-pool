@@ -2,7 +2,6 @@
 # pylint: disable=too-many-locals, broad-exception-caught, too-many-branches, too-many-statements,
 
 import asyncio
-import datetime
 import os
 from itertools import zip_longest
 from pathlib import Path
@@ -22,6 +21,7 @@ from rich.console import Console
 from ycecream import y
 
 from deeplx_pool.batch_deeplx_tr import batch_deeplx_tr
+
 # from deeplx_pool.batch_newapi_tr import batch_newapi_tr
 from deeplx_pool.duration_human import duration_human
 
@@ -37,7 +37,7 @@ def trtext2docx(
     source_text: Union[None, List[str], str] = None,
     trtext: Union[None, List[str], str] = None,
     alt_text: Union[None, List[str], str] = None,
-    outfile: str  = "",
+    outfile: str = "",
     openfile: bool = True,
 ):
     """
@@ -84,7 +84,7 @@ def trtext2docx(
     # Normal style: built-in
     # document.styles["Normal"].font.name = "宋体"  # type: ignore
     # document.styles["Normal"].font.highlight_color = WD_COLOR_INDEX.YELLOW  # type: ignore
-    document.styles['Normal'].font.size = Pt(12)
+    document.styles["Normal"].font.size = Pt(12)
     document.styles["Normal"].paragraph_format.line_spacing = Pt(0)  # type: ignore
 
     # SrctextStyle
@@ -146,7 +146,6 @@ def trtext2docx(
 
 
 async def main():  # pylint: disable=missing-function-docstring
-
     filepath = r"tests\test.txt"
     texts = loadtext(filepath)[:10]  # for testing
 

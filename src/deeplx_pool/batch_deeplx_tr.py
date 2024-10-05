@@ -6,6 +6,7 @@ cache = diskcache.Cache(Path.home() / ".diskcache" / "deeplx-sites")
 # reverse, prepare for deq[-1] and deq.rotate
 deq = deque([url for url, deplay in cache.get("deeplx-sites")[::-1]]
 """
+
 # pylint: disable=too-many-branches, too-many-statements
 import asyncio
 from collections import deque
@@ -224,7 +225,9 @@ async def worker(
     return trtext_list
 
 
-async def batch_deeplx_tr(texts: List[str], n_workers: int = 4) -> List[Tuple[int, str]]:
+async def batch_deeplx_tr(
+    texts: List[str], n_workers: int = 4
+) -> List[Tuple[int, str]]:
     """
     Translate in batch using urls from deq.
 

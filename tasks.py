@@ -19,3 +19,10 @@ def scrape_deeplx(c):
     # c.run("rye run python -m deeplx_pool.scrape_deeplx_shodan")
     # c.run("rye run python -m deeplx_pool.deeplx_pool")
     c.run("uv run python -m deeplx_pool.deeplx_pool")
+
+@task(
+    # default=True,
+)
+def fastapi(c):
+    """Run uvicorn with fastapi."""
+    c.run("nodemon -w src/deeplx_pool/fastapi_app.py -x uv run python -m deeplx_pool.fastapi_app")

@@ -14,6 +14,7 @@ curl -X POST https://api.deeplx.org/translate -d '{
 example return:
 {"code":200,"id":865910002,"data":"你好，世界","alternatives":["世界，你好","你好，世界！","大家好"]}
 """
+
 # pylint: disable=invalid-name,too-many-branches, too-many-statements, too-many-arguments
 import asyncio
 import os

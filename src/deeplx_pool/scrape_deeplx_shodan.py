@@ -14,7 +14,6 @@ invoke
 
 # pylint: disable=invalid-name, broad-except, line-too-long, too-many-statements, too-many-branches
 import asyncio
-import re
 from datetime import datetime, timedelta
 from pathlib import Path
 from random import choices
@@ -148,7 +147,9 @@ def scrape_deeplx_shodan(
         logger.error(f"An error occurred while requesting {e.request.url!r}: {e}")
         return []
     except httpx.HTTPStatusError as e:
-        logger.error(f"Error response {e.response.status_code} while requesting {e.request.url!r}: {e.response.text}")
+        logger.error(
+            f"Error response {e.response.status_code} while requesting {e.request.url!r}: {e.response.text}"
+        )
         return []
     except Exception as e:
         logger.error(e)
@@ -239,7 +240,7 @@ async def main():
         if _ > 0:
             logger.info(f"Retry: {_}")
         try:
-            timeout = Timeout(30 * 1.2 ** _)
+            timeout = Timeout(30 * 1.2**_)
             url_list_fofa = scrape_deeplx_fofa(timeout=timeout)
             break
         except httpx.ReadTimeout:

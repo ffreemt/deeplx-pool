@@ -70,7 +70,8 @@ def duration_human(value: float) -> str:
         return "quasi-infinity \n(Python int too large to convert to C int)"
 
 
-async def main():
+# async def main():
+def main():
     """Bootsrap."""
     url_list_hist = cache.get("deeplx-sites", [])
     console.print("Saved urls: ", url_list_hist, len(url_list_hist))
@@ -241,11 +242,15 @@ async def main():
 
     console.print("Combined urls: ", url_list)
 
+    async def gather():
+        return await asyncio.gather(
+            *map(check_deeplx_async, url_list),
+            return_exceptions=True,
+        )
+
     then = time()
-    urls_checked = await asyncio.gather(
-        *map(check_deeplx_async, url_list),
-        return_exceptions=True,
-    )
+    # urls_checked = await asyncio.gather(
+    urls_checked = asyncio.run(gather())
 
     # urls_checked = [*map(check_url, url_list)]
 
@@ -274,7 +279,8 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    # asyncio.run(main())
+    main()
 
     _ = """
     try:

@@ -31,6 +31,7 @@ else:
     deeplx_url = "https://deeplx.dattw.eu.org/translate"
 logger.trace(f"{deeplx_url=}")
 
+
 def deeplx_client(
     text: str,
     source_lang: str = "",
