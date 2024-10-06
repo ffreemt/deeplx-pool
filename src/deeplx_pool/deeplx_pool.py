@@ -9,6 +9,7 @@ import asyncio
 import itertools
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
+import re
 from pathlib import Path
 from time import time
 
@@ -72,9 +73,9 @@ def duration_human(value: float) -> str:
 
 # async def main():
 def main():
-    """Bootsrap."""
+    """Bootstrap."""
     url_list_hist = cache.get("deeplx-sites", [])
-    console.print("Saved urls: ", url_list_hist, len(url_list_hist))
+    console.print("Saved urls: ", url_list_hist, len(url_list_hist))  # type: ignore
 
     # ########## shodan ##########
     console.print("diggin shodan...", style="yellow")
@@ -174,12 +175,7 @@ def main():
         style="green",
     )
 
-    # extract urls. combine, deduplicate, convert back to list
     # ########## misc extra ##########
-    _ = list(dict(url_list_hist))  # type: ignore
-    _ = set(_ + url_list_shodan + url_list_fofa + url_list_fofa_hack)
-    url_list = list(_)
-
     # append extra sites to check
 
     # quick scrape deeplx.wangwangit.com
@@ -236,11 +232,33 @@ def main():
 
     console.print(f"{extra_urls=}")
 
+    # done in proc_static.py
+    _ = """
+    filename = "linuxdo216930.txt"
+    try:
+        filecont = Path(filename).read_text(encoding="utf8").strip()
+    except Exception as exc:
+        logger.error(exc)
+        filecont = ""
+    urls_file = re.split(r"[\s,;；，]+", filecont)
+    urls_file = [elm.strip() for elm in urls_file if elm.strip()]
+    logger.info(f"{len(urls_file)=}")
+    extra_urls.extend(urls_file)
+    # """
+
+    _ = """
     for elm in extra_urls:
         if elm not in url_list:
             url_list.append(elm)
+    # """
+
+    # extract urls, combine, deduplicate, convert back to list
+    _ = list(dict(url_list_hist))  # type: ignore
+    _ = set(_ + url_list_shodan + url_list_fofa + url_list_fofa_hack + extra_urls)
+    url_list = list(_)
 
     console.print("Combined urls: ", url_list)
+    console.print(f"\t # of combined urls: {len(url_list)}")
 
     async def gather():
         return await asyncio.gather(
