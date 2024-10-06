@@ -1,4 +1,8 @@
-"""Check and time urls from a file (default  linuxdo216930.txt.)"""
+"""
+Check and time urls from a file (default  linuxdo216930.txt).
+
+Inject urls in a file to diskcache deeplx-sites.
+"""
 # pylint: disable=broad-exception-caught
 
 import asyncio
