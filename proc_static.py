@@ -107,5 +107,9 @@ def proc_file(filename=""):
     # sorted
     urls_valid = sorted(urls_valid, key=lambda x: x[1])  # type: ignore
 
-    # cache.set("deeplx-sites", urls_valid)
-    # logger.info(f"{len(urls_valid)} to diskcache deeplx-sites")
+    cache.set("deeplx-sites", urls_valid)
+    logger.info(f"{len(urls_valid)} to diskcache deeplx-sites")
+
+
+if __name__ == "__main__":
+    proc_file()
