@@ -224,6 +224,8 @@ if __name__ == "__main__":
         port = int(port)
     except ValueError:
         port = 8787
-    port = max(1024, port)  # if port < 1024 set to 8787
+    if port < 1024:
+        logger.warning(f"port: {port} is reserved, setting to 8787")
+        port = 8787
 
     uvicorn.run(app, host=host, port=port)
