@@ -93,6 +93,7 @@ def proc_file(filename=""):
             *map(check_deeplx_async, urls),
             return_exceptions=True,
         )
+
     then = time()
     # urls_checked = await asyncio.gather(
     urls_checked = asyncio.run(gather())
@@ -105,11 +106,14 @@ def proc_file(filename=""):
     # save valid urls to cache
     urls_valid = [_ for _ in urls_checked if isinstance(_[1], float)]  # type: ignore
 
-    # merge with cache.get("deeplx-sites")
-    urls_valid = urls_valid + cache.get("deeplx-sites")  # type: ignore
-
     # sorted
     urls_valid = sorted(urls_valid, key=lambda x: x[1])  # type: ignore
+
+    logger.info(f"urls_valid: {len(urls_valid)}")
+    console.print(
+        urls_valid,
+        style="green",
+    )
 
     cache.set("deeplx-sites", urls_valid)
     logger.info(f"{len(urls_valid)} to diskcache deeplx-sites")
