@@ -57,7 +57,8 @@ app = FastAPI(
 
 try:
     y(os.getenv("TOKENS"))
-    TOKENS = json.loads(os.getenv("DXPOOL_TOKENS"))  # type: ignore
+    _ = os.getenv("DXPOOL_TOKENS")
+    TOKENS = json.loads(_.replace("'", '"'))  # type: ignore
 except Exception as exc:
     y(exc)
     TOKENS = None
