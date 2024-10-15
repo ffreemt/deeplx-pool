@@ -1,0 +1,21 @@
+FROM ghcr.io/astral-sh/uv:python3.12-alpine
+
+SHELL ["sh", "-exc"]
+
+WORKDIR /app
+ENV UV_LINK_MODE=copy \
+    UV_COMPILE_BYTECODE=1 \
+    UV_PYTHON_DOWNLOADS=never \
+    UV_PYTHON=python3.12 \
+    PIP_ROOT_USER_ACTION=ignore
+
+#    UV_PROJECT_ENVIRONMENT=/app
+
+COPY . .
+
+RUN uv venv && \
+  uv sync --no-dev --no-install-project
+
+EXPOSE 8787
+
+CMD uv run python -m deeplx_pool.fastapi_app

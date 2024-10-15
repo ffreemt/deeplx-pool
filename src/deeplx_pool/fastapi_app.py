@@ -215,7 +215,7 @@ async def fetch_n_urls_get(
 def run_deeplx_pool_main():
     """Prep for Thread."""
     # while True:
-    for count in cycle(rang(5)):
+    for count in cycle(range(5)):
         if count:
             y(count)
             deeplx_pool.main()
