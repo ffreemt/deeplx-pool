@@ -90,7 +90,7 @@ def main():
         if _ > 0:
             logger.info(f"Retry: {_}")
         try:
-            timeout = Timeout(30 * 1.2**_)
+            timeout = Timeout(60 * 1.5 ** _)
             url_list_shodan = scrape_deeplx_shodan(timeout=timeout)
             break
         except httpx.ReadTimeout:
@@ -233,7 +233,7 @@ def main():
     console.print(f"{extra_urls=}")
 
     # done in proc_static.py
-    _ = """
+    _ = r"""
     filename = "linuxdo216930.txt"
     try:
         filecont = Path(filename).read_text(encoding="utf8").strip()

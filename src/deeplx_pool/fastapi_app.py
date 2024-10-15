@@ -13,9 +13,11 @@ refer also to https://github.com/snailyp/yeschat-reverse/blob/main/api/main.py
 """
 # pylint: disable=broad-exception-caught, invalid-name
 
+from itertools import cycle
 import os
 from pathlib import Path
 import json
+import subprocess
 from time import sleep
 from typing import Optional
 from threading import Thread
@@ -30,6 +32,7 @@ from ycecream import y
 import uvicorn
 
 from deeplx_pool import __version__, deeplx_pool
+from proc_file import proc_file
 
 _ = Path.home() / ".diskcache" / "deeplx-sites"
 cache = diskcache.Cache(_)
@@ -211,8 +214,14 @@ async def fetch_n_urls_get(
 
 def run_deeplx_pool_main():
     """Prep for Thread."""
-    while True:
-        deeplx_pool.main()
+    # while True:
+    for count in cycle(rang(5)):
+        if count:
+            y(count)
+            deeplx_pool.main()
+        else:  # run proc_file every 5 runs
+            y(count)
+            proc_file()
         sleep(1800)  # 30 minutes
 
 
@@ -227,5 +236,8 @@ if __name__ == "__main__":
     if port < 1024:
         logger.warning(f"port: {port} is reserved, setting to 8787")
         port = 8787
+
+    # run proc_file.py first, default linuxdo216930.txt
+    subprocess.run("uv run python proc_file.py", shell=True)
 
     uvicorn.run(app, host=host, port=port)

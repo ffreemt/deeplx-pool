@@ -8,7 +8,9 @@ invoke build
 invoke --help build
 
 """
+
 from invoke import task
+
 
 @task(
     default=True,
@@ -20,9 +22,16 @@ def scrape_deeplx(c):
     # c.run("rye run python -m deeplx_pool.deeplx_pool")
     c.run("uv run python -m deeplx_pool.deeplx_pool")
 
-@task(
-    # default=True,
-)
+
+@task()
+def proc_static(c):
+    """Run python proc_static.py, inv proc-static."""
+    c.run("uv run python proc_static.py")
+
+
+@task()
 def fastapi(c):
-    """Run uvicorn with fastapi."""
-    c.run("nodemon -w src/deeplx_pool/fastapi_app.py -x uv run python -m deeplx_pool.fastapi_app")
+    """Run uvicorn with fastapi: nodemon -w src/deeplx_pool/fastapi_app.py -x uv run python -m deeplx_pool.fastapi_app."""
+    c.run(
+        "nodemon -w src/deeplx_pool/fastapi_app.py -x uv run python -m deeplx_pool.fastapi_app"
+    )

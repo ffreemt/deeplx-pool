@@ -1,0 +1,8 @@
+services:
+  dxp:
+    container_name: deeplx-pool
+    build:
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    ports:
+      - 8788:8787
