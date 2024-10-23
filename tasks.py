@@ -24,9 +24,9 @@ def scrape_deeplx(c):
 
 
 @task()
-def proc_static(c):
+def proc_file(c):
     """Run python proc_static.py, inv proc-static."""
-    c.run("uv run python proc_static.py")
+    c.run("uv run python proc_file.py")
 
 
 @task()
