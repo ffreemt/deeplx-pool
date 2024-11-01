@@ -16,7 +16,8 @@ invoke
 import asyncio
 from datetime import datetime, timedelta
 from pathlib import Path
-from random import choices
+# from random import choices
+from random import choice
 from time import time
 from typing import List, Union
 
@@ -111,7 +112,8 @@ def scrape_deeplx_shodan(
 
     """
     if not query:
-        query = choices(["deepl api", "welcome to deeplx"])[0]
+        # query = choices(["deepl api", "welcome to deeplx"])[0]
+        query = choice(["deepl api", "welcome to deeplx", "Welcome to deeplx-pro"])
     logger.debug(f"{query=}")
     # check sentinel in cache
     value, expire_time = cache.get(  # type: ignore
