@@ -162,8 +162,11 @@ def main():
         query_def2 = '''body='{"code":200,"message":"DeepL Free API, Developed by sjlleo and missuo. Go to /translate with POST. http://github.com/OwO-Network/DeepLX"}' && country="CN"'''
         query_def3 = '''"welcome to deeplx" && country="CN"'''
         query_def4 = '''"Welcome to deeplx-pro"'''
+
+        # deeplx-serverless
+        query_def5 = '''"Welcome to the DeepL Free API."'''
         # query_def = choice([query_def1, query_def2, query_def3])
-        queries = [query_def1, query_def2, query_def3, query_def4]
+        queries = [query_def1, query_def2, query_def3, query_def4, query_def5]
 
         with ThreadPoolExecutor() as pool:
             urls = [*pool.map(fetch_urls_fofa_hack, queries)]
