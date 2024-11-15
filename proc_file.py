@@ -110,13 +110,19 @@ def proc_file(filename=""):
     urls_valid = sorted(urls_valid, key=lambda x: x[1])  # type: ignore
 
     logger.info(f"urls_valid: {len(urls_valid)}")
-    console.print(
-        urls_valid,
-        style="green",
-    )
-
-    cache.set("deeplx-sites", urls_valid)
-    logger.info(f"{len(urls_valid)} to diskcache deeplx-sites")
+    if urls_valid:
+        cache.set("deeplx-sites", urls_valid)
+        console.print(
+            urls_valid,
+            f"{len(urls_valid)} to diskcache deeplx-sites",
+            style="green",
+        )
+    else:
+        console.print(
+            urls_valid,
+            "Is the net down?",
+            style="red bold",
+        )
 
 
 if __name__ == "__main__":
