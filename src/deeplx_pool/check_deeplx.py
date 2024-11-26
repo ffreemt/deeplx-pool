@@ -42,7 +42,7 @@ data = {"text": "Hello, world!", "source_lang": "EN", "target_lang": "ZH"}
 
 
 def check_deeplx(
-    url: str, timeout: Union[float, Timeout] = Timeout(4)
+    url: str, timeout: Union[float, Timeout] = Timeout(6)
 ) -> Tuple[str, Union[float, str]]:
     """
     Check url for valid deeplx service.
@@ -50,7 +50,7 @@ def check_deeplx(
     Args:
     ----
       url: dest url to check, must be a legit URL
-      timeout: float or httpx.Timeout, default Timeout(4)
+      timeout: float or httpx.Timeout, default Timeout(6)
 
     Returns:
     -------
@@ -82,7 +82,7 @@ def check_deeplx(
 
 
 async def check_deeplx_async(
-    url: str, timeout: Union[float, Timeout] = Timeout(4)
+    url: str, timeout: Union[float, Timeout] = Timeout(6)
 ) -> Tuple[str, Union[float, str]]:
     """
     Check url for valid deeplx service with async.
@@ -90,7 +90,7 @@ async def check_deeplx_async(
     Args:
     ----
       url: dest url to check, must be a legit URL
-      timeout: float or httpx.Timeout, default Timeout(4)
+      timeout: float or httpx.Timeout, default Timeout(6)
 
     Returns:
     -------
@@ -129,7 +129,7 @@ async def check_deeplx_async(
 
 
 async def check_deeplx_async1(
-    url: str, timeout: float = 4
+    url: str, timeout: float = 6
 ) -> Tuple[str, Union[float, str]]:
     """
     Check url for valid deeplx service using aiohttp.
@@ -137,7 +137,7 @@ async def check_deeplx_async1(
     Args:
     ----
       url: dest url to check, must be a legit URL
-      timeout: float, default 4
+      timeout: float, default 6
 
     Returns:
     -------
