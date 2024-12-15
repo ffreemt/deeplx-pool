@@ -23,8 +23,8 @@ from typing import Optional
 from threading import Thread
 
 import diskcache
-from fastapi import FastAPI, HTTPException, Header, Depends
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, HTTPException, Header, Depends, status
+from fastapi.responses import HTMLResponse, JSONResponse
 from loguru import logger
 
 # from pydantic import BaseModel
@@ -163,7 +163,11 @@ async def get_num(
     except Exception as exc:
         logger.error(exc)
         _ = str(exc)
-    return _
+    # return _
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content={"status": "healthy"}
+    )
 
 
 @app.post("/set")
@@ -211,6 +215,14 @@ async def fetch_n_urls_get(
         logger.error(exc)
         _ = {"errors": str(exc)}
     return _
+
+
+@app.get("/health")
+async def health_check():
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content={"status": "healthy"}
+    )
 
 
 def run_deeplx_pool_main():
