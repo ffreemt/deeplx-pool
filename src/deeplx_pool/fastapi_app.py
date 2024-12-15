@@ -163,11 +163,7 @@ async def get_num(
     except Exception as exc:
         logger.error(exc)
         _ = str(exc)
-    # return _
-    return JSONResponse(
-        status_code=status.HTTP_200_OK,
-        content={"status": "healthy"}
-    )
+    return _
 
 
 @app.post("/set")
