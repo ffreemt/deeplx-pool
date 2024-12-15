@@ -217,8 +217,16 @@ async def fetch_n_urls_get(
     return _
 
 
-@app.get("/health")
+@app.get("/health", include_in_schema=False)
 async def health_check():
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content={"status": "healthy"}
+    )
+
+
+@app.head("/health")
+async def health_head():
     return JSONResponse(
         status_code=status.HTTP_200_OK,
         content={"status": "healthy"}
