@@ -1,5 +1,5 @@
 """
-Check and time urls from a file (default  linuxdo216930.txt).
+Check and time urls from a file (default  fofa-results.txt).
 
 Inject urls in a file to diskcache deeplx-sites.
 """
@@ -71,15 +71,25 @@ def proc_file(filename=""):
     """
     if not filename:
         filename = "linuxdo216930.txt"
+        filename = "fofa-results.txt"
+
+    # DeepL Free API, Developed by sjlleo and missuo
+    # fofa-results6.txt
 
     try:
-        filecont = Path(filename).read_text(encoding="utf8").strip()
+        filecont = Path("linuxdo216930.txt").read_text(encoding="utf8").strip() + \
+            "\n" + \
+            Path(filename).read_text(encoding="utf8").strip() \
+            + Path("fofa-results6.txt").read_text(encoding="utf8").strip()
+        # filecont = Path("fofa-results6.txt").read_text(encoding="utf8").strip()
     except Exception as exc:
         logger.error(exc)
         filecont = ""
 
-    urls = re.split(r"[\s,;；，]+", filecont)
-    urls = [elm.strip().strip("/") for elm in urls if elm.strip()]
+    # urls = re.split(r"[\s,;]+", filecont)
+    # urls = [elm.strip().strip("/") for elm in urls if elm.strip()]
+
+    urls = re.findall(r"https?://[\w.:-]+", filecont)
 
     logger.info(f"{len(urls)=}")
 

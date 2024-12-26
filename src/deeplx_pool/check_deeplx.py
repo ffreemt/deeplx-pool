@@ -82,7 +82,7 @@ def check_deeplx(
 
 
 async def check_deeplx_async(
-    url: str, timeout: Union[float, Timeout] = Timeout(6)
+    url: str, timeout: Union[float, Timeout] = Timeout(10)
 ) -> Tuple[str, Union[float, str]]:
     """
     Check url for valid deeplx service with async.
@@ -90,7 +90,7 @@ async def check_deeplx_async(
     Args:
     ----
       url: dest url to check, must be a legit URL
-      timeout: float or httpx.Timeout, default Timeout(6)
+      timeout: float or httpx.Timeout, default Timeout(10)
 
     Returns:
     -------
