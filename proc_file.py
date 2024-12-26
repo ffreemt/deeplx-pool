@@ -77,10 +77,11 @@ def proc_file(filename=""):
     # fofa-results6.txt
 
     try:
-        filecont = Path("linuxdo216930.txt").read_text(encoding="utf8").strip() + \
-            "\n" + \
-            Path(filename).read_text(encoding="utf8").strip() \
-            + Path("fofa-results6.txt").read_text(encoding="utf8").strip()
+        filecont = (
+            Path("linuxdo216930.txt").read_text(encoding="utf8")
+            + Path("fofa-results6.txt").read_text(encoding="utf8")
+            + Path(filename).read_text(encoding="utf8")
+        )
         # filecont = Path("fofa-results6.txt").read_text(encoding="utf8").strip()
     except Exception as exc:
         logger.error(exc)
