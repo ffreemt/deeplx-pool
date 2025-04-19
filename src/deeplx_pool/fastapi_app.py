@@ -225,7 +225,7 @@ async def health_check():
 async def health_head():
     return JSONResponse(
         status_code=status.HTTP_200_OK,
-        # content={"status": "healthy"}
+        content={"status": "healthy"}
     )
 
 

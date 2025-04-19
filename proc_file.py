@@ -7,8 +7,10 @@ Inject urls in a file to diskcache deeplx-sites.
 
 import asyncio
 from datetime import timedelta
+from random import choices
 import re
 from pathlib import Path
+from platform import platform
 from time import time
 
 import diskcache
@@ -92,12 +94,16 @@ def proc_file(filename=""):
 
     urls = re.findall(r"https?://[\w.:-]+", filecont)
 
-    logger.info(f"{len(urls)=}")
-
     url_list_hist = cache.get("deeplx-sites", [])
     _ = list(dict(url_list_hist))  # type: ignore
     urls = set(_ + urls)
     urls = list(urls)
+
+    # if windows, pick 700
+    if "windows" in platform().lower():
+        urls = choices(urls, k=700)
+
+    logger.info(f"{len(urls)=}")
 
     async def gather():
         return await asyncio.gather(
